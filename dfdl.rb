@@ -5,6 +5,7 @@ require 'open-uri'
 require 'json'
 require 'yaml'
 require 'fileutils'
+require 'tmpdir'
 
 class Package
   attr_reader :release_dir, :cache_dir, :url, :filename
