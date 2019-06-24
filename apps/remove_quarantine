@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+xattr -dr com.apple.quarantine "Dwarf Fortress.app" "Dwarf Fortress LNP.app"

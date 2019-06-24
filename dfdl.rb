@@ -179,6 +179,7 @@ class Release
     FileUtils.cp_r("apps/Dwarf Fortress.app", release_dir)
     FileUtils.cp("apps/Dwarf Fortress.app/Contents/Resources/df.icns", "#{release_dir}/PyLNP.app/Contents/Resources/df.icns")
     FileUtils.cp("apps/LNPInfo.plist", "#{release_dir}/PyLNP.app/Contents/Info.plist")
+    FileUtils.cp("apps/remove_quarantine", "#{release_dir}/remove_quarantine")
     FileUtils.mv("#{release_dir}/PyLNP.app", "#{release_dir}/Dwarf Fortress LNP.app")
     FileUtils.touch("#{release_dir}/Dwarf Fortress LNP.app")
   end
