@@ -160,7 +160,7 @@ class Release
     Config.load
     @release_dir = Dir.mktmpdir
     @cache_dir = FileUtils.mkdir_p('package_cache').first
-    @target_dir = "df"
+    @target_dir = "df-" + Time.new.strftime("%Y%m%d%H%M%S")
   end
 
   def run_packages
