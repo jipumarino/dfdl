@@ -132,6 +132,7 @@ class PEStarterPackPackage < Package
     doc = Nokogiri::HTML(open("http://df.wicked-code.com"))
     hrefs = doc.xpath("//a[contains(@href,'zip')]").map{|n| n["href"]}
     @list = hrefs.map{|href| {name: href, url: "http://df.wicked-code.com/#{href}"}}.reverse
+    [{name: "0.47.04-r03.zip", url: "http://dffd.bay12games.com/download.php?id=14793&f=PeridexisErrant%27s+Starter+Pack+0.47.04-r03.zip"}]
   end
 
   def extract
