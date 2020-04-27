@@ -112,7 +112,8 @@ class TWBTPackage < GitHubPackage
   end
 
   def releases_url
-    "https://api.github.com/repos/mifki/df-twbt/releases"
+    #"https://api.github.com/repos/mifki/df-twbt/releases"
+    "https://api.github.com/repos/thurin/df-twbt/releases"
   end
 
   def extract
