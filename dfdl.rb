@@ -69,9 +69,13 @@ class GitHubPackage < Package
   end
 end
 
-class PyLNPPackage < BitBucketPackage
+class PyLNPPackage < GitHubPackage
+  def match_name
+    /OSX/
+  end
+
   def releases_url
-    "https://api.bitbucket.org/2.0/repositories/Pidgeot/python-lnp/downloads"
+    "https://api.github.com/repos/Pidgeot/python-lnp/releases"
   end
 
   def extract
