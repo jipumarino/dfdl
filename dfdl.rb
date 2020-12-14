@@ -63,7 +63,7 @@ class GitHubPackage < Package
   def get_list
     return @list if @list
     url = releases_url
-    doc = JSON.load(open(releases_url + "?access_token=#{Config.github_token}"))
+    doc = JSON.load(open(releases_url, "Authorization" => "token #{Config.github_token}"))
     assets = doc.flat_map{|r| r["assets"]}.select{|a| a["name"] =~ match_name}
     @list = assets.map{|a| {name: a["name"], url: a["browser_download_url"]}}
   end
