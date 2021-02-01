@@ -47,11 +47,11 @@ end
 class BitBucketPackage < Package
   def get_list
     return @list if @list
-    doc = JSON.load(open(releases_url))
+    doc = JSON.load(URI.open(releases_url))
     acc = doc["values"]
     if false
       while doc["next"] do
-        doc = JSON.load(open(doc["next"]))
+        doc = JSON.load(URI.open(doc["next"]))
         acc.concat(doc["values"])
       end
     end
@@ -63,7 +63,7 @@ class GitHubPackage < Package
   def get_list
     return @list if @list
     url = releases_url
-    doc = JSON.load(open(releases_url, "Authorization" => "token #{Config.github_token}"))
+    doc = JSON.load(URI.open(releases_url, "Authorization" => "token #{Config.github_token}"))
     assets = doc.flat_map{|r| r["assets"]}.select{|a| a["name"] =~ match_name}
     @list = assets.map{|a| {name: a["name"], url: a["browser_download_url"]}}
   end
@@ -86,7 +86,7 @@ end
 class DFPackage < Package
   def get_list
     return @list if @list
-    doc = Nokogiri::HTML(open("http://bay12games.com/dwarves/older_versions.html"))
+    doc = Nokogiri::HTML(URI.open("http://bay12games.com/dwarves/older_versions.html"))
     hrefs = doc.xpath("//a[contains(@href,'osx')]").map{|n| n["href"]}
     @list = hrefs.map{|href| {name: href, url: "http://bay12games.com/dwarves/#{href}"}}
   end
@@ -133,7 +133,7 @@ end
 class PEStarterPackPackage < Package
   def get_list
     return @list if @list
-    doc = Nokogiri::HTML(open("http://df.wicked-code.com"))
+    doc = Nokogiri::HTML(URI.open("http://df.wicked-code.com"))
     hrefs = doc.xpath("//a[contains(@href,'zip')]").map{|n| n["href"]}
     @list = hrefs.map{|href| {name: href, url: "http://df.wicked-code.com/#{href}"}}.reverse
   end
