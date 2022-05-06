@@ -191,6 +191,8 @@ class Release
 
   def setup_config
     FileUtils.cp("#{release_dir}/df_osx/dfhack.init-example", "#{release_dir}/df_osx/dfhack.init")
+    init_file_path = "#{release_dir}/df_osx/data/init/init.txt"
+    File.write(init_file_path, File.read(init_file_path).gsub("[PRINT_MODE:2D]", "[PRINT_MODE:TWBT]"))
   end
 
   def move_target
