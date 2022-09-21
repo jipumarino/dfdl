@@ -71,7 +71,7 @@ end
 
 class PyLNPPackage < GitHubPackage
   def match_name
-    /OSX/
+    /OSX|macOS/
   end
 
   def releases_url
